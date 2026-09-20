@@ -94,6 +94,18 @@ function getConnection(): PDO
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
 
+        // Muitos provedores de MySQL na nuvem (Aiven, etc.) exigem ligação
+        // cifrada (SSL/TLS). Ativa com a variável de ambiente DB_SSL=true.
+        // DB_SSL_CA (opcional) aponta para um certificado CA; sem ele, liga
+        // com encriptação mas sem verificar o certificado do servidor.
+        if (filter_var(getenv('DB_SSL') ?: 'false', FILTER_VALIDATE_BOOLEAN)) {
+            $caminhoCA = getenv('DB_SSL_CA') ?: null;
+            if ($caminhoCA) {
+                $opcoes[PDO::MYSQL_ATTR_SSL_CA] = $caminhoCA;
+            }
+            $opcoes[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = filter_var(getenv('DB_SSL_VERIFY') ?: 'false', FILTER_VALIDATE_BOOLEAN);
+        }
+
         try {
             $pdo = new PDO($dsn, DB_USER, DB_PASS, $opcoes);
         } catch (PDOException $e) {
