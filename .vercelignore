@@ -1,0 +1,5 @@
+# Dumps SQL não são necessários em runtime (importa-os manualmente na tua BD externa)
+database/
+
+# Regras específicas do Apache, sem efeito no Vercel
+.htaccess

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.php",
+      "use": "vercel-php@0.7.1"
+    }
+  ],
+  "env": {
+    "MODO_DEBUG": "false"
+  }
+}

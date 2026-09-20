@@ -1,0 +1,26 @@
+# =========================================================
+# Bitline Angola — Regras de servidor (Apache)
+# =========================================================
+
+# --- Bloquear acesso direto a pastas sensíveis ---
+RewriteEngine On
+RewriteRule ^database/ - [F,L]
+RewriteRule ^config/ - [F,L]
+
+# --- Nunca listar o conteúdo das pastas ---
+Options -Indexes
+
+# --- Impedir acesso direto a ficheiros .sql em qualquer pasta ---
+<FilesMatch "\.sql$">
+    Require all denied
+</FilesMatch>
+
+# --- Forçar HTTPS (ativa isto DEPOIS de teres o certificado SSL a funcionar) ---
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# --- Cabeçalhos de segurança adicionais (reforçam os que já vêm do PHP) ---
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

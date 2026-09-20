@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /actions/
+Disallow: /config/
+Disallow: /database/
+Disallow: /includes/
+
+Sitemap: https://www.bitlineangola.com.ao/sitemap.xml
