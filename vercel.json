@@ -43,8 +43,5 @@
       "src": "^/.*$",
       "dest": "/api/index.php"
     }
-  ],
-  "env": {
-    "MODO_DEBUG": "false"
-  }
+  ]
 }
