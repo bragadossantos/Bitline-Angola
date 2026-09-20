@@ -51,7 +51,7 @@ try {
     $pdo = getConnection();
     $stmt = $pdo->prepare(
         'INSERT INTO candidaturas (nome, email, telefone, area_interesse, mensagem, cv_ficheiro, status, criado_em)
-         VALUES (:nome, :email, :telefone, :area, :mensagem, :cv, "nova", NOW())'
+         VALUES (:nome, :email, :telefone, :area, :mensagem, :cv, \'nova\', NOW())'
     );
     $stmt->execute([
         ':nome'     => $nome,

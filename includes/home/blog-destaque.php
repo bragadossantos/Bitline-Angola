@@ -6,7 +6,7 @@ $pdoBlogHome = getConnection();
 $stmtBlogHome = $pdoBlogHome->prepare(
     'SELECT id, titulo, slug, resumo, imagem, criado_em
      FROM artigos
-     WHERE status = "publicado"
+     WHERE status = \'publicado\'
      ORDER BY criado_em DESC
      LIMIT 3'
 );

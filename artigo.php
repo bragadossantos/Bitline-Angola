@@ -14,7 +14,7 @@ $stmt = $pdo->prepare(
     'SELECT a.*, ad.nome AS autor_nome
      FROM artigos a
      LEFT JOIN admins ad ON ad.id = a.autor_id
-     WHERE a.slug = :slug AND a.status = "publicado"
+     WHERE a.slug = :slug AND a.status = \'publicado\'
      LIMIT 1'
 );
 $stmt->execute([':slug' => $slug]);
@@ -44,7 +44,7 @@ try {
 $stmtRel = $pdo->prepare(
     'SELECT titulo, slug, imagem, criado_em
      FROM artigos
-     WHERE status = "publicado" AND id != :id
+     WHERE status = \'publicado\' AND id != :id
      ORDER BY criado_em DESC
      LIMIT 3'
 );

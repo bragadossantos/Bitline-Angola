@@ -10,7 +10,7 @@ $paginaAtual   = isset($_GET['pagina']) ? max(1, (int) $_GET['pagina']) : 1;
 $porPagina     = 6;
 $offset        = ($paginaAtual - 1) * $porPagina;
 
-$condicao = 'WHERE status = "publicado"';
+$condicao = "WHERE status = 'publicado'";
 $parametros = [];
 if ($termo !== '') {
     $condicao .= ' AND (titulo LIKE :termo OR resumo LIKE :termo OR conteudo LIKE :termo)';

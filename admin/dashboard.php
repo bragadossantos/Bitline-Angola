@@ -5,8 +5,8 @@ exigirLogin();
 
 $pdo = getConnection();
 
-$totalPublicados = (int) $pdo->query('SELECT COUNT(*) FROM artigos WHERE status = "publicado"')->fetchColumn();
-$totalRascunhos   = (int) $pdo->query('SELECT COUNT(*) FROM artigos WHERE status = "rascunho"')->fetchColumn();
+$totalPublicados = (int) $pdo->query("SELECT COUNT(*) FROM artigos WHERE status = 'publicado'")->fetchColumn();
+$totalRascunhos   = (int) $pdo->query("SELECT COUNT(*) FROM artigos WHERE status = 'rascunho'")->fetchColumn();
 $totalVistas      = (int) $pdo->query('SELECT COALESCE(SUM(visualizacoes),0) FROM artigos')->fetchColumn();
 $contactosNaoLidos = (int) $pdo->query('SELECT COUNT(*) FROM contactos WHERE lido = 0')->fetchColumn();
 
